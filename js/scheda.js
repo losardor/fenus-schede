@@ -8,7 +8,6 @@
   const app = document.getElementById('app');
   let scheda = null;        // stato corrente
   let predefinita = null;   // copia intatta di /data/<id>.json
-  let firmaPredefinita = '';
 
   /* ---------- archivio locale, sempre protetto ---------- */
   const archivio = {
@@ -25,7 +24,7 @@
     const k = p.split('.'); const ultimo = k.pop();
     const dest = k.reduce((a, x) => (a[x] ??= {}), o); dest[ultimo] = v;
   }
-  function firma(testo) { let h = 0; for (let i = 0; i < testo.length; i++) h = (h * 31 + testo.charCodeAt(i)) | 0; return String(h); }
+  const versioneDi = (o) => Number(o && o.versione) || 1; // stati salvati prima del versionamento = 1
   const EDITABILE = (() => { try { const d = document.createElement('div'); d.contentEditable = 'plaintext-only'; return d.contentEditable === 'plaintext-only' ? 'plaintext-only' : 'true'; } catch (e) { return 'true'; } })();
 
   /* ---------- mattoni di markup ---------- */
@@ -86,7 +85,11 @@
   <button type="button" class="btn pericolo" data-azione="ripristina-si">Sì, ripristina</button>
   <button type="button" class="btn leggero" data-azione="ripristina-no">Annulla</button>
 </div>
-<div class="avviso" id="avviso" hidden></div>`;
+<div class="avviso" id="avviso" hidden>
+  <p><strong>La scheda di base è stata aggiornata.</strong> Se vuoi conservare le tue modifiche, fai prima «Esporta JSON».</p>
+  <button type="button" class="btn" data-azione="versione-carica">Carica la nuova scheda</button>
+  <button type="button" class="btn leggero" data-azione="versione-tieni">Tieni la mia</button>
+</div>`;
   }
 
   function contatore(p, etichetta, max, conMax = true) {
@@ -107,7 +110,7 @@
     const risorse = (scheda.risorse || []).map((r, i) => contatore(
       `risorse.${i}.attuale`,
       `${txt(`risorse.${i}.nome`)} ${verifica(r)}`,
-      num(`risorse.${i}.max`, 'w2 max'),
+      r.maxDa ? `<output data-c="${esc(r.maxDa)}"></output>` : num(`risorse.${i}.max`, 'w2 max'),
     ).replace('<div class="contatore">', `<div class="contatore">${togli(`risorse.${i}`)}`)).join('');
     return `
 <section class="blocco sessione">
@@ -239,6 +242,7 @@
     <div class="gruppo">
       <h3>${txt(`incantesimi.gruppi.${i}.nome`)} ${inc.mostraCD === false ? '' : `<span class="cd">CD ${calc(`cd.${i}`)}</span>`}</h3>
       ${inc.mostraCD === false ? '' : perche(`cd.${i}`)}
+      ${g.giornalieriBase != null ? `<p class="giorn">Al giorno ${calc(`giorn.${i}`)}</p>${perche(`giorn.${i}`)}` : ''}
       <p>${txt(`incantesimi.gruppi.${i}.voci`, '', 'elenco', true)}</p>
     </div>`).join('');
     return `
@@ -292,6 +296,13 @@ ${strumenti()}
     controllaPredefinita();
   }
 
+  // Massimo di una risorsa: calcolato se la risorsa indica `maxDa`, altrimenti quello scritto.
+  function maxRisorsa(percorso, r) {
+    const ris = leggiPercorso(scheda, percorso.replace(/\.attuale$/, ''));
+    if (ris && ris.maxDa && r[ris.maxDa]) return r[ris.maxDa].v;
+    return Number(ris && ris.max) || 0;
+  }
+
   /* ---------- ricalcolo senza ridisegnare (non perde il cursore) ---------- */
   function ricalcola() {
     const r = calcola(scheda);
@@ -314,7 +325,7 @@ ${strumenti()}
     }
     app.querySelectorAll('[data-caselle]').forEach((el) => {
       const p = el.dataset.caselle;
-      const max = p.startsWith('risorse.') ? Number(leggiPercorso(scheda, p.replace(/attuale$/, 'max'))) || 0 : 0;
+      const max = p.startsWith('risorse.') ? maxRisorsa(p, r) : 0;
       el.textContent = max > 0 ? '☐'.repeat(Math.min(max, 30)) : '';
       el.classList.toggle('vuota', max === 0);
     });
@@ -328,7 +339,6 @@ ${strumenti()}
   function salva() {
     clearTimeout(timer);
     timer = setTimeout(() => {
-      scheda._firmaPredefinita = firmaPredefinita;
       const ok = archivio.scrivi(scheda);
       stato(ok ? 'Salvato su questo dispositivo' : 'Salvataggio non disponibile: usa Esporta JSON', !ok);
     }, 250);
@@ -338,11 +348,7 @@ ${strumenti()}
     el.textContent = testo; el.classList.toggle('male', male);
   }
   function controllaPredefinita() {
-    const av = document.getElementById('avviso');
-    if (scheda._firmaPredefinita && scheda._firmaPredefinita !== firmaPredefinita) {
-      av.hidden = false;
-      av.textContent = 'La scheda predefinita è stata aggiornata dal master. Usa «Ripristina» per caricarla (perderai le modifiche locali: esportale prima, se servono).';
-    } else av.hidden = true;
+    document.getElementById('avviso').hidden = !(versioneDi(scheda) < versioneDi(predefinita));
   }
 
   /* ---------- eventi ---------- */
@@ -384,7 +390,7 @@ ${strumenti()}
       let v = leggiPercorso(scheda, p);
       if (v == null && p === 'pf.attuali') v = calcola(scheda)['pf.max'].v;
       v = (Number(v) || 0) + (a === 'piu' ? 1 : -1);
-      if (p.startsWith('risorse.')) v = Math.max(0, Math.min(v, Number(leggiPercorso(scheda, p.replace(/attuale$/, 'max'))) || 0));
+      if (p.startsWith('risorse.')) v = Math.max(0, Math.min(v, maxRisorsa(p, calcola(scheda))));
       if (p === 'pf.nonLetali') v = Math.max(0, v);
       if (p === 'pf.attuali') v = Math.min(v, calcola(scheda)['pf.max'].v);
       scriviPercorso(scheda, p, v);
@@ -401,13 +407,17 @@ ${strumenti()}
     else if (a === 'importa') document.getElementById('file-import').click();
     else if (a === 'ripristina') { document.getElementById('conferma').hidden = false; }
     else if (a === 'ripristina-no') { document.getElementById('conferma').hidden = true; }
-    else if (a === 'ripristina-si') {
+    else if (a === 'versione-carica') {
+      archivio.cancella(); scheda = clona(predefinita); rendi(); stato('Nuova scheda di base caricata');
+    } else if (a === 'versione-tieni') {
+      scheda.versione = versioneDi(predefinita); document.getElementById('avviso').hidden = true; salva();
+    } else if (a === 'ripristina-si') {
       archivio.cancella(); scheda = clona(predefinita); rendi(); stato('Scheda predefinita ripristinata');
     } else if (a === 'stampa') window.print();
   });
 
   function esporta() {
-    const copia = clona(scheda); delete copia._firmaPredefinita;
+    const copia = clona(scheda);
     const blob = new Blob([JSON.stringify(copia, null, 2)], { type: 'application/json' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob); a.download = `${id}-fenus.json`;
@@ -428,6 +438,7 @@ ${strumenti()}
     document.getElementById('file-import').value = '';
   }
   function normalizza(s) {
+    delete s._firmaPredefinita; // residuo del vecchio controllo
     s.pf ??= { attuali: null, nonLetali: 0 };
     for (const k of ['attacchi', 'abilita', 'tratti', 'capacita', 'talenti', 'equipaggiamento', 'risorse']) s[k] ??= [];
     return s;
@@ -446,9 +457,7 @@ ${strumenti()}
         fetch('data/comune.json', { cache: 'no-cache' }).catch(() => null),
       ]);
       if (!risp.ok) throw new Error(risp.status);
-      const testo = await risp.text();
-      predefinita = normalizza(JSON.parse(testo));
-      firmaPredefinita = firma(testo);
+      predefinita = normalizza(await risp.json());
       if (rispComune && rispComune.ok) comune = await rispComune.json();
     } catch (e) {
       app.innerHTML = `<p class="errore-pagina">Scheda «${esc(id)}» non trovata. <a href="index.html">Torna all'elenco</a>.</p>`;

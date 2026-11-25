@@ -269,3 +269,7 @@ output { font-family: var(--mono); }
   .regole li { margin: 0; }
   .note .ed { min-height: 0; }
 }
+
+/* incantesimi al giorno calcolati */
+.giorn { margin: 0 0 .3rem; font-size: .85rem; color: var(--tenue); display: flex; align-items: center; gap: .4rem; }
+.avviso p { margin: 0 0 .5rem; }

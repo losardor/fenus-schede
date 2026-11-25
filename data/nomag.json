@@ -1,12 +1,13 @@
 {
   "id": "nomag",
+  "versione": 2,
   "nome": "Nomag",
-  "descrizione": "umano mago spellslinger 1",
+  "descrizione": "umano stregone 1",
   "razza": "Umano",
   "livello": 1,
   "taglia": "Media",
   "velocita": "9 m",
-  "caratteristiche": { "for": 9, "des": 15, "cos": 15, "int": 18, "sag": 12, "car": 14 },
+  "caratteristiche": { "for": 9, "des": 15, "cos": 15, "int": 14, "sag": 12, "car": 18 },
   "dadoVita": 6,
   "pfVari": 0,
   "pfVariNota": "",
@@ -20,45 +21,42 @@
   "iniziativaVari": 0,
   "pf": { "attuali": null, "nonLetali": 0 },
   "risorse": [
-    { "nome": "Incantesimi di 1°", "max": 2, "attuale": 2 }
+    { "nome": "Incantesimi di 1°", "maxDa": "giorn.1", "max": 4, "attuale": 4 },
+    { "nome": "Legame arcano", "max": 1, "attuale": 1 }
   ],
   "attacchi": [
-    { "nome": "Pistola", "caratt": "des", "vari": 1, "nota": "Tiro Ravvicinato, entro 9 m", "tipo": "distanza, incremento 6 m", "danni": "1d8+1", "critico": "x4", "dettagli": "Inceppamento 1, ricarica azione standard." }
+    { "nome": "Pistola", "caratt": "des", "vari": 0, "nota": "", "tipo": "distanza, incremento 6 m; CA di contatto entro il primo incremento", "danni": "1d8", "critico": "x4", "dettagli": "Inceppamento 1, ricarica azione standard." }
   ],
   "abilita": [
     { "nome": "Artigianato (Metallo)", "caratt": "int", "gradi": 1, "vari": 0, "nota": "" },
     { "nome": "Conoscenze (Ingegneria)", "caratt": "int", "gradi": 1, "vari": 0, "nota": "" },
-    { "nome": "Alchimia", "caratt": "int", "gradi": 1, "vari": 0, "nota": "" },
-    { "nome": "Concentrazione", "caratt": "cos", "gradi": 1, "vari": 0, "nota": "" },
-    { "nome": "Osservare", "caratt": "sag", "gradi": 1, "vari": 0, "nota": "" },
-    { "nome": "Cercare", "caratt": "int", "gradi": 1, "vari": 0, "nota": "" },
+    { "nome": "Raggirare", "caratt": "car", "gradi": 1, "vari": 0, "nota": "" },
+    { "nome": "Diplomazia", "caratt": "car", "gradi": 1, "vari": 0, "nota": "" },
     { "nome": "Valutare", "caratt": "int", "gradi": 1, "vari": 0, "nota": "" },
-    { "nome": "Utilizzare Corde", "caratt": "des", "gradi": 1, "vari": 0, "nota": "" },
+    { "nome": "Osservare", "caratt": "sag", "gradi": 1, "vari": 0, "nota": "" },
     { "nome": "Sapienza Magica", "caratt": "int", "gradi": 1, "vari": 0, "nota": "" },
     { "nome": "Conoscenze (Arcane)", "caratt": "int", "gradi": 1, "vari": 0, "nota": "" }
   ],
   "incantesimi": {
-    "titolo": "Incantesimi",
-    "caratt": "int",
+    "titolo": "Incantesimi conosciuti",
+    "caratt": "car",
     "gruppi": [
-      { "livello": 1, "nome": "Sul tamburo, 1° (2/giorno)", "voci": "Mani Brucianti, Dardo Incantato, Scudo, Armatura Magica, Unto, Servitore Inosservato, Munizioni Abbondanti (Abundant Ammunition)" }
+      { "livello": 0, "nome": "Trucchetti (a volontà)", "voci": "Individuazione del Magico, Mano Magica, Riparare, Fiotto Acido" },
+      { "livello": 1, "nome": "1° livello", "giornalieriBase": 3, "voci": "Dardo Incantato, Unto" }
     ]
   },
   "tratti": [],
   "capacita": [
-    { "nome": "Arma arcana", "testo": "Lancia attraverso la pistola incantesimi a raggio, cono, linea e contatto a distanza; critico x3; inceppamento.", "verifica": true },
-    { "nome": "Armaiolo (Gunsmithing)", "testo": "" },
-    { "nome": "Proiettili del mago (Mage Bullets)", "testo": "Azione veloce, sacrifica un incantesimo per +1 alla pistola per livello dell'incantesimo." },
-    { "nome": "Niente trucchetti", "testo": "" },
-    { "nome": "Scuole opposte", "testo": "Ammaliamento, Illusione, Necromanzia, Divinazione." }
+    { "nome": "Stirpe Arcana", "testo": "Legame arcano (Arcane Bond) con la Mano d'Officina: 1/giorno lancia un incantesimo conosciuto in più." },
+    { "nome": "Arcano di stirpe", "testo": "+1 alla CD degli incantesimi con metamagia." }
   ],
   "talenti": [
-    { "testo": "Tiro Ravvicinato" },
-    { "testo": "Tiro Preciso" }
+    { "testo": "Competenza nelle Armi Esotiche (armi da fuoco)" },
+    { "testo": "Gunsmithing" },
+    { "testo": "Escludere Materiali (Eschew Materials)" }
   ],
-  "protesi": "La Mano d'Officina: mano sinistra modulare (pinza, cacciavite, lente), contiene il libro degli incantesimi. La pistola si monta in gioco.",
+  "protesi": "La Mano d'Officina: mano sinistra modulare (pinza, cacciavite, lente), oggetto del legame arcano. Bloccata da un Verificatore: per un minuto lancia con una prova di Concentrazione, CD 20 + livello dell'incantesimo. La pistola si monta in gioco.",
   "equipaggiamento": [
-    { "testo": "Borsa per componenti" },
     { "testo": "Balestra leggera con dardi" },
     { "testo": "Lanterna" }
   ],

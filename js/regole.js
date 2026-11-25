@@ -21,7 +21,9 @@ const TIRI_SALVEZZA = [
 
 const n = (v) => { const x = Number(v); return Number.isFinite(x) ? Math.trunc(x) : 0; };
 const modDi = (punteggio) => Math.floor((n(punteggio) - 10) / 2);
-const conSegno = (v) => (v < 0 ? '−' + -v : '+' + v);
+// Incantesimi bonus per punteggio elevato: per il livello L servono mod ≥ L, poi uno ogni 4 punti di modificatore.
+const incantesimiBonus = (mod, livello) => (livello < 1 || mod < livello ? 0 : Math.floor((mod - livello) / 4) + 1);
+const conSegno =(v) => (v < 0 ? '−' + -v : '+' + v);
 const numero = (v) => (v < 0 ? '−' + -v : String(v));
 
 /* Somma di termini [valore, etichetta, mostraSeZero]. Il primo termine si mostra sempre. */
@@ -107,9 +109,16 @@ function calcola(s) {
       r[`cd.${i}`] = somma(`CD ${n(g.livello)}°`, [
         [10, 'base'], [g.livello, 'livello incantesimo', true], [mod[inc.caratt] ?? 0, B(inc.caratt), true],
       ], false);
+      // Incantesimi al giorno (solo per i gruppi che dichiarano la base di classe).
+      if (g.giornalieriBase != null) {
+        r[`giorn.${i}`] = somma(`${n(g.livello)}° al giorno`, [
+          [g.giornalieriBase, 'base classe', true],
+          [incantesimiBonus(mod[inc.caratt] ?? 0, n(g.livello)), `bonus ${B(inc.caratt)}`, true],
+        ], false);
+      }
     });
   }
   return r;
 }
 
-window.Regole = { CARATT, CARATT_BREVE, CARATT_NOME, TAGLIE, TIRI_SALVEZZA, calcola, modDi, conSegno, numero };
+window.Regole = { CARATT, CARATT_BREVE, CARATT_NOME, TAGLIE, TIRI_SALVEZZA, calcola, modDi, conSegno, numero, incantesimiBonus };

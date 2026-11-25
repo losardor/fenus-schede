@@ -62,12 +62,20 @@ e apri `http://localhost:8000/sheet.html?pg=jeko`.
    - Aggiungi `"verifica": true` a una voce per mostrare il bollino **VERIFICA**
      (`razzaVerifica` per la riga della razza).
    - I totali (CA, TS, attacchi, abilità, PF max, CD) non si scrivono: li calcola la scheda.
-2. Controlla che il file sia JSON valido (per esempio con `python3 -m json.tool data/jeko.json`).
-3. `git commit -am "Aggiorna Jeko" && git push`.
+   - `incantesimi`: `caratt` è la caratteristica da incantatore (CD e incantesimi bonus).
+     Un gruppo con `giornalieriBase` mostra gli incantesimi al giorno calcolati
+     (base di classe + bonus); una risorsa con `"maxDa": "giorn.<n>"` prende da lì il massimo.
+2. Se la modifica deve arrivare a chi ha già usato la scheda, aumenta di 1 il campo
+   `versione` (per esempio da 1 a 2).
+3. Controlla che il file sia JSON valido (per esempio con `python3 -m json.tool data/jeko.json`).
+4. `git commit -am "Aggiorna Jeko" && git push`.
 
-Chi ha già modificato la scheda sul proprio dispositivo continua a vedere la sua copia,
-con un avviso che la predefinita è cambiata. Per caricare la nuova versione preme
-**Ripristina** (meglio fare prima **Esporta JSON** se vuole tenere le sue modifiche).
+Chi ha già modificato la scheda sul proprio dispositivo continua a vedere la sua copia.
+Se la `versione` della scheda di base è più alta di quella salvata, compare l'avviso
+«La scheda di base è stata aggiornata» con due pulsanti: **Carica la nuova scheda**
+(sostituisce la copia locale; meglio fare prima **Esporta JSON**) e **Tieni la mia**
+(nasconde l'avviso fino al prossimo aumento di versione). Le correzioni senza aumento
+di versione arrivano solo a chi non ha modifiche salvate, o dopo **Ripristina**.
 
 Per aggiungere un personaggio: crea `data/<nuovo-id>.json` (copiane uno esistente e
 cambia `id`) e aggiungi l'id a `data/personaggi.json`.
