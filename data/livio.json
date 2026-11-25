@@ -1,0 +1,65 @@
+{
+  "id": "livio",
+  "nome": "Livio",
+  "descrizione": "androide pistolero 1",
+  "razza": "Androide",
+  "livello": 1,
+  "taglia": "Media",
+  "velocita": "9 m",
+  "caratteristiche": { "for": 11, "des": 17, "cos": 15, "int": 12, "sag": 12, "car": 8 },
+  "dadoVita": 10,
+  "pfVari": 0,
+  "pfVariNota": "",
+  "bab": 1,
+  "ts": {
+    "tempra": { "base": 2, "vari": 0, "nota": "" },
+    "riflessi": { "base": 2, "vari": 0, "nota": "" },
+    "volonta": { "base": 0, "vari": 0, "nota": "" }
+  },
+  "ca": { "armatura": 3, "naturale": 0, "vari": 0, "nota": "" },
+  "iniziativaVari": 0,
+  "pf": { "attuali": null, "nonLetali": 0 },
+  "risorse": [
+    { "nome": "Grinta", "max": 1, "attuale": 1 },
+    { "nome": "Scarica di naniti", "max": 1, "attuale": 1 },
+    { "nome": "Cartucce", "max": 4, "attuale": 4 }
+  ],
+  "attacchi": [
+    { "nome": "Trombone, palla singola", "caratt": "des", "vari": 0, "nota": "", "tipo": "distanza, incremento 3 m", "danni": "1d8", "critico": "x2", "dettagli": "Inceppamento 1-2." },
+    { "nome": "Trombone, pallettoni", "caratt": "des", "vari": 0, "nota": "", "tipo": "cono 4,5 m", "danni": "1d8", "critico": "x2", "dettagli": "Cono 4,5 m, +2 contro ogni creatura.", "verifica": true }
+  ],
+  "abilita": [
+    { "nome": "Osservare", "caratt": "sag", "gradi": 1, "vari": 2, "nota": "androide" },
+    { "nome": "Cercare", "caratt": "int", "gradi": 1, "vari": 2, "nota": "androide" },
+    { "nome": "Ascoltare", "caratt": "sag", "gradi": 0, "vari": 2, "nota": "androide" },
+    { "nome": "Conoscenze (Ingegneria)", "caratt": "int", "gradi": 1, "vari": 0, "nota": "" },
+    { "nome": "Artigianato (Metallo)", "caratt": "int", "gradi": 1, "vari": 0, "nota": "" },
+    { "nome": "Saltare", "caratt": "for", "gradi": 1, "vari": 0, "nota": "" },
+    { "nome": "Intimidire", "caratt": "car", "gradi": 1, "vari": 0, "nota": "" },
+    { "nome": "Percepire Inganni", "caratt": "sag", "gradi": 0, "vari": -4, "nota": "androide" }
+  ],
+  "tratti": [
+    { "testo": "Scurovisione 18 m, visione crepuscolare." },
+    { "testo": "+2 a Osservare, Ascoltare, Cercare." },
+    { "testo": "+4 ai TS contro influenza mentale, paralisi, veleno, stordimento." },
+    { "testo": "Immune a fatica, esaurimento, malattie, sonno, paura, emozioni." },
+    { "testo": "−4 a Percepire Inganni, nessun bonus morale." },
+    { "testo": "Scarica di naniti (Nanite Surge): 1/giorno, azione immediata, +4 a un tiro di d20." }
+  ],
+  "capacita": [
+    { "nome": "Grinta", "testo": "1 punto." },
+    { "nome": "Imprese", "testo": "Deadeye, Gunslinger's Dodge, Quick Clear." },
+    { "nome": "Armaiolo (Gunsmithing)", "testo": "" },
+    { "nome": "Ricarica del trombone", "testo": "Azione standard.", "verifica": true }
+  ],
+  "talenti": [
+    { "testo": "Ricarica Rapida (trombone)" }
+  ],
+  "protesi": "Avambraccio destro a due canne, statistiche del trombone (blunderbuss): 1d8, critico x2, inceppamento 1-2. Palla singola +4, incremento 3 m.",
+  "equipaggiamento": [
+    { "testo": "Cuoio borchiato" },
+    { "testo": "Pozione di cura ferite leggere" },
+    { "testo": "Corda di seta" }
+  ],
+  "note": ""
+}

@@ -1,0 +1,9 @@
+{
+  "titolo": "Regole condivise",
+  "regole": [
+    "Protesi: la protesi contiene una capacità di classe e non aggiunge alcun bonus.",
+    "Il tocco di un Verificatore blocca una protesi sigillata per un minuto.",
+    "Jeko sblocca un arto inceppato in dieci minuti, con entrambe le mani libere.",
+    "Punti abilità: ogni classe riceve 1 punto extra libero per livello; le classi con base 2 ricevono anche 2 punti extra vincolati."
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "id": "paga",
+  "nome": "Paga",
+  "descrizione": "gufo cineta del fuoco 1",
+  "razza": "Gufo (usa le statistiche dell'hobgoblin)",
+  "razzaVerifica": true,
+  "livello": 1,
+  "taglia": "Media",
+  "velocita": "9 m",
+  "caratteristiche": { "for": 8, "des": 15, "cos": 15, "int": 10, "sag": 12, "car": 12 },
+  "dadoVita": 8,
+  "pfVari": 0,
+  "pfVariNota": "",
+  "bab": 0,
+  "ts": {
+    "tempra": { "base": 2, "vari": 0, "nota": "" },
+    "riflessi": { "base": 2, "vari": 0, "nota": "" },
+    "volonta": { "base": 0, "vari": 0, "nota": "" }
+  },
+  "ca": { "armatura": 3, "naturale": 0, "vari": 0, "nota": "" },
+  "iniziativaVari": 0,
+  "pf": { "attuali": null, "nonLetali": 0 },
+  "risorse": [
+    { "nome": "Burn", "max": 5, "attuale": 0 }
+  ],
+  "attacchi": [
+    { "nome": "Getto cinetico di fuoco", "caratt": "des", "vari": 1, "nota": "Tiro Ravvicinato", "tipo": "contatto a distanza, 9 m", "danni": "1d6+2 fuoco", "critico": "", "dettagli": "A volontà." }
+  ],
+  "abilita": [
+    { "nome": "Osservare", "caratt": "sag", "gradi": 1, "vari": 0, "nota": "" },
+    { "nome": "Ascoltare", "caratt": "sag", "gradi": 1, "vari": 0, "nota": "" },
+    { "nome": "Nascondersi", "caratt": "des", "gradi": 1, "vari": 4, "nota": "razziale" },
+    { "nome": "Muoversi Silenziosamente", "caratt": "des", "gradi": 1, "vari": 4, "nota": "razziale" },
+    { "nome": "Intimidire", "caratt": "car", "gradi": 1, "vari": 0, "nota": "" }
+  ],
+  "tratti": [
+    { "testo": "Usa le statistiche dell'hobgoblin.", "verifica": true },
+    { "testo": "Scurovisione 18 m." },
+    { "testo": "+4 a Nascondersi e Muoversi Silenziosamente." }
+  ],
+  "capacita": [
+    { "nome": "Getto cinetico di fuoco", "testo": "Contatto a distanza, 9 m, +3, 1d6+2 fuoco, a volontà." },
+    { "nome": "Burn", "testo": "Massimo 5; ogni punto 1 danno non letale per livello." },
+    { "nome": "Raccogliere potere (Gather Power)", "testo": "Azione di movimento, riduce di 1 il burn." },
+    { "nome": "Infusione", "testo": "Burning Infusion (1 burn)." },
+    { "nome": "Pirocinesi di base", "testo": "Bagliore, Luce, Scintilla." }
+  ],
+  "talenti": [
+    { "testo": "Tiro Ravvicinato" }
+  ],
+  "protesi": "Nessuna.",
+  "equipaggiamento": [
+    { "testo": "Cuoio borchiato" },
+    { "testo": "Pozione di cura ferite leggere" },
+    { "testo": "Corda di seta" }
+  ],
+  "note": ""
+}

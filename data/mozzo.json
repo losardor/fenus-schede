@@ -1,0 +1,68 @@
+{
+  "id": "mozzo",
+  "nome": "Mozzo",
+  "descrizione": "tartaruga magus 1",
+  "razza": "Tartaruga",
+  "livello": 1,
+  "taglia": "Media",
+  "velocita": "9 m; nuotare 4,5 m",
+  "caratteristiche": { "for": 13, "des": 16, "cos": 13, "int": 16, "sag": 9, "car": 10 },
+  "dadoVita": 8,
+  "pfVari": 0,
+  "pfVariNota": "",
+  "bab": 0,
+  "ts": {
+    "tempra": { "base": 2, "vari": 0, "nota": "" },
+    "riflessi": { "base": 0, "vari": 0, "nota": "" },
+    "volonta": { "base": 2, "vari": 0, "nota": "" }
+  },
+  "ca": { "armatura": 3, "naturale": 3, "vari": 0, "nota": "" },
+  "iniziativaVari": 0,
+  "pf": { "attuali": null, "nonLetali": 0 },
+  "risorse": [
+    { "nome": "Riserva arcana", "max": 4, "attuale": 4 },
+    { "nome": "Trucchetti", "max": 3, "attuale": 3 },
+    { "nome": "Incantesimi di 1°", "max": 2, "attuale": 2 }
+  ],
+  "attacchi": [
+    { "nome": "Lama leggera", "caratt": "des", "vari": 0, "nota": "", "tipo": "mischia", "danni": "1d6+1", "critico": "", "dettagli": "Arma Accurata: usa Des per colpire." }
+  ],
+  "abilita": [
+    { "nome": "Nascondersi", "caratt": "des", "gradi": 1, "vari": 0, "nota": "" },
+    { "nome": "Muoversi Silenziosamente", "caratt": "des", "gradi": 1, "vari": 0, "nota": "" },
+    { "nome": "Equilibrio", "caratt": "des", "gradi": 1, "vari": 0, "nota": "" },
+    { "nome": "Saltare", "caratt": "for", "gradi": 1, "vari": 0, "nota": "" },
+    { "nome": "Scalare", "caratt": "for", "gradi": 1, "vari": 0, "nota": "" },
+    { "nome": "Conoscenze (Arcane)", "caratt": "int", "gradi": 1, "vari": 0, "nota": "" },
+    { "nome": "Sapienza Magica", "caratt": "int", "gradi": 1, "vari": 0, "nota": "" },
+    { "nome": "Concentrazione", "caratt": "cos", "gradi": 1, "vari": 0, "nota": "" },
+    { "nome": "Nuotare", "caratt": "for", "gradi": 0, "vari": 8, "nota": "tartaruga" }
+  ],
+  "incantesimi": {
+    "titolo": "Incantesimi",
+    "caratt": "int",
+    "gruppi": [
+      { "livello": 0, "nome": "Trucchetti (3/giorno)", "voci": "Suono Fantasma, Mano Magica, Individuazione del Magico" },
+      { "livello": 1, "nome": "Nel Guscio, 1° (2/giorno)", "voci": "Scudo, Svanire, Stretta Folgorante, Saltare, Ritirata Rapida, Foschia Occultante" }
+    ]
+  },
+  "tratti": [
+    { "testo": "Armatura naturale +3 (il guscio)." },
+    { "testo": "Nuotare 4,5 m, +8 a Nuotare." },
+    { "testo": "Trattiene il fiato per Cos × 4 round." }
+  ],
+  "capacita": [
+    { "nome": "Riserva arcana", "testo": "4 punti: azione veloce, 1 punto, +1 all'arma per un minuto." },
+    { "nome": "Combattimento magico (Spell Combat)", "testo": "Attacco completo più un incantesimo, −2 a tutti i tiri." }
+  ],
+  "talenti": [
+    { "testo": "Arma Accurata" }
+  ],
+  "protesi": "Il Guscio, contiene il libro degli incantesimi.",
+  "equipaggiamento": [
+    { "testo": "Lama corta" },
+    { "testo": "Cuoio borchiato" },
+    { "testo": "Corda di seta" }
+  ],
+  "note": ""
+}

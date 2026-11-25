@@ -1,0 +1,72 @@
+{
+  "id": "jeko",
+  "nome": "Jeko",
+  "descrizione": "gnomo alchimista 1",
+  "razza": "Gnomo",
+  "livello": 1,
+  "taglia": "Piccola",
+  "velocita": "6 m",
+  "caratteristiche": { "for": 9, "des": 14, "cos": 15, "int": 15, "sag": 12, "car": 11 },
+  "dadoVita": 8,
+  "pfVari": 0,
+  "pfVariNota": "",
+  "bab": 0,
+  "ts": {
+    "tempra": { "base": 2, "vari": 0, "nota": "" },
+    "riflessi": { "base": 2, "vari": 0, "nota": "" },
+    "volonta": { "base": 0, "vari": 0, "nota": "" }
+  },
+  "ca": { "armatura": 0, "naturale": 0, "vari": 0, "nota": "" },
+  "iniziativaVari": 0,
+  "pf": { "attuali": null, "nonLetali": 0 },
+  "risorse": [
+    { "nome": "Bombe", "max": 3, "attuale": 3 },
+    { "nome": "Estratti di 1°", "max": 2, "attuale": 2 }
+  ],
+  "attacchi": [
+    { "nome": "Bomba", "caratt": "des", "vari": 1, "nota": "Tiro Ravvicinato", "tipo": "contatto a distanza, entro 9 m", "danni": "1d6+3 fuoco", "critico": "", "dettagli": "Schizzi 3, Riflessi CD 12 dimezza." }
+  ],
+  "abilita": [
+    { "nome": "Alchimia", "caratt": "int", "gradi": 1, "vari": 2, "nota": "Ossessivo" },
+    { "nome": "Artigianato (Metallo)", "caratt": "int", "gradi": 1, "vari": 0, "nota": "" },
+    { "nome": "Conoscenze (Arcane)", "caratt": "int", "gradi": 1, "vari": 0, "nota": "" },
+    { "nome": "Cercare", "caratt": "int", "gradi": 1, "vari": 0, "nota": "" },
+    { "nome": "Borseggiare", "caratt": "des", "gradi": 1, "vari": 0, "nota": "" },
+    { "nome": "Guarire", "caratt": "sag", "gradi": 1, "vari": 0, "nota": "" },
+    { "nome": "Conoscenze (Ingegneria)", "caratt": "int", "gradi": 1, "vari": 1, "nota": "Master Tinker" },
+    { "nome": "Disattivare Congegni", "caratt": "int", "gradi": 0, "vari": 1, "nota": "Master Tinker" }
+  ],
+  "incantesimi": {
+    "titolo": "Formule nel braccio",
+    "caratt": "int",
+    "mostraCD": false,
+    "gruppi": [
+      { "livello": 1, "nome": "Estratti di 1° (2/giorno)", "voci": "Cura Ferite Leggere (la \"CuraCola\"), Scudo, Ingrandire Persone, Identificare" }
+    ]
+  },
+  "tratti": [
+    { "testo": "Taglia Piccola (+1 CA e tiri per colpire)." },
+    { "testo": "Velocità 6 m." },
+    { "testo": "Visione crepuscolare." },
+    { "testo": "+2 ai TS contro illusioni." },
+    { "testo": "Ossessivo: +2 Alchimia." },
+    { "testo": "Master Tinker: +1 Disattivare Congegni e Conoscenze (Ingegneria)." }
+  ],
+  "capacita": [
+    { "nome": "Bombe", "testo": "3/giorno, +4 a contatto a distanza entro 9 m, 1d6+3 fuoco, schizzi 3, Riflessi CD 12 dimezza." },
+    { "nome": "Estratti", "testo": "2/giorno di 1°." },
+    { "nome": "Mutageno", "testo": "" },
+    { "nome": "Mescere Pozioni", "testo": "" },
+    { "nome": "Throw Anything", "testo": "" }
+  ],
+  "talenti": [
+    { "testo": "Tiro Ravvicinato" }
+  ],
+  "protesi": "Braccio sinistro d'ottone, contiene il libro delle formule.",
+  "equipaggiamento": [
+    { "testo": "Balestra leggera con dardi" },
+    { "testo": "Fuoco Sicuro (2 fiasche)" },
+    { "testo": "Arnesi da scasso" }
+  ],
+  "note": ""
+}
