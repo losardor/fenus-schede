@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Collegati · Fenus, The First Instance</title>
+  <link rel="stylesheet" href="css/stile.css">
+</head>
+<body class="qr">
+  <header class="testa-indice">
+    <p class="sopra">Pathfinder 1e</p>
+    <h1>Fenus, The First Instance</h1>
+    <p id="istruzioni">Inquadra il codice con la fotocamera del telefono.</p>
+  </header>
+  <main class="qr-main">
+    <div class="avviso qr-avviso" id="qr-avviso" hidden></div>
+    <figure class="qr-grande">
+      <div id="qr-sito" class="qr-codice"></div>
+      <figcaption><code id="qr-url"></code></figcaption>
+    </figure>
+    <form class="qr-modifica" id="qr-form">
+      <label for="qr-input">Indirizzo per i giocatori</label>
+      <input id="qr-input" type="url" inputmode="url" spellcheck="false" autocomplete="off">
+      <button type="submit" class="btn">Aggiorna</button>
+      <button type="button" class="btn leggero" id="qr-copia">Copia link</button>
+      <span class="stato" id="qr-stato" role="status"></span>
+    </form>
+    <h2 class="qr-titolo">Oppure vai dritto alla tua scheda</h2>
+    <div class="qr-pg" id="qr-pg"></div>
+  </main>
+  <footer class="piede"><a href="index.html">← Personaggi</a></footer>
+  <script src="js/vendor/qrcode.js"></script>
+  <script src="js/qr.js"></script>
+</body>
+</html>

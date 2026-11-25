@@ -103,6 +103,22 @@ function calcola(s) {
     r[`ab.${i}`] = res;
   });
 
+  // Punti abilità: per livello max(1, base classe + Int) + 1 extra libero (+2 extra vincolati se base 2) + razza.
+  if (s.puntiAbilitaClasse != null) {
+    const base = n(s.puntiAbilitaClasse);
+    const classeInt = base + mod.int;
+    let testo = classeInt >= 1 ? `${base} classe ${mod.int < 0 ? '−' : '+'} ${Math.abs(mod.int)} Int` : '1 (minimo per classe + Int)';
+    let perLivello = Math.max(1, classeInt) + 1; testo += ' + 1 extra libero';
+    if (base === 2) { perLivello += 2; testo += ' + 2 extra vincolati'; }
+    if (n(s.puntiAbilitaRazza)) { perLivello += n(s.puntiAbilitaRazza); testo += ` + ${n(s.puntiAbilitaRazza)} razza`; }
+    const spesi = (s.abilita || []).reduce((a, x) => a + n(x.gradi), 0);
+    const massimo = perLivello * liv;
+    r['punti.abilita'] = {
+      v: spesi, massimo, segnato: false, errore: spesi > massimo,
+      testo: `Punti abilità: ${spesi} spesi su ${massimo} = ${liv} livell${liv > 1 ? 'i' : 'o'} × (${testo})`,
+    };
+  }
+
   const inc = s.incantesimi;
   if (inc && inc.caratt) {
     (inc.gruppi || []).forEach((g, i) => {

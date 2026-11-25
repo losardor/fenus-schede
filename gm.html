@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Revisione schede · Fenus, The First Instance</title>
+  <link rel="stylesheet" href="css/stile.css">
+</head>
+<body class="gm">
+  <header class="testa-indice">
+    <p class="sopra">Per il master</p>
+    <h1>Revisione schede</h1>
+    <p>Trascina qui i file inviati dai giocatori. La pagina non salva né invia nulla: tutto resta in questa finestra.</p>
+  </header>
+  <main class="gm-main">
+    <label class="zona" id="zona" for="file-gm">
+      <input type="file" id="file-gm" accept="application/json,.json" multiple hidden>
+      <strong>Trascina qui i file .json</strong>
+      <span>oppure tocca per sceglierli (anche più di uno)</span>
+    </label>
+    <p class="gm-stato" id="gm-stato" role="status">Caricamento delle schede di base…</p>
+    <div class="gm-azioni" id="gm-azioni" hidden>
+      <button type="button" class="btn" id="scarica-tutte">Scarica tutte</button>
+      <button type="button" class="btn leggero" id="svuota">Svuota</button>
+    </div>
+    <div id="risultati"></div>
+  </main>
+  <footer class="piede"><a href="index.html">← Personaggi</a></footer>
+  <script src="js/regole.js"></script>
+  <script src="js/scambio.js"></script>
+  <script src="js/gm.js"></script>
+</body>
+</html>

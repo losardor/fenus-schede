@@ -11,6 +11,8 @@
   "dadoVita": 6,
   "pfVari": 0,
   "pfVariNota": "",
+  "puntiAbilitaClasse": 2,
+  "puntiAbilitaRazza": 1,
   "bab": 0,
   "ts": {
     "tempra": { "base": 0, "vari": 0, "nota": "" },
